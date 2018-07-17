@@ -2,6 +2,7 @@ package com.takeaway.employee.web;
 
 import com.takeaway.employee.service.EmployeeService;
 import com.takeaway.employee.web.dto.EmployeeDto;
+import com.takeaway.employee.web.dto.UpdateEmployeeDto;
 import com.takeaway.employee.web.ex.EmployeeNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +28,10 @@ public class EmployeeController {
     @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
     public EmployeeDto read(@PathVariable UUID id) {
         return service.read(id).orElseThrow(EmployeeNotFoundException::new);
+    }
+
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.PUT)
+    public EmployeeDto update(@PathVariable UUID id, @RequestBody UpdateEmployeeDto updateDto) {
+        return service.update(id, updateDto).orElseThrow(EmployeeNotFoundException::new);
     }
 }
