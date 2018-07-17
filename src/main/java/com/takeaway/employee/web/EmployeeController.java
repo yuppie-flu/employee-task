@@ -34,4 +34,9 @@ public class EmployeeController {
     public EmployeeDto update(@PathVariable UUID id, @RequestBody UpdateEmployeeDto updateDto) {
         return service.update(id, updateDto).orElseThrow(EmployeeNotFoundException::new);
     }
+
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.DELETE)
+    public EmployeeDto delete(@PathVariable UUID id) {
+        return service.delete(id).orElseThrow(EmployeeNotFoundException::new);
+    }
 }

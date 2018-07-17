@@ -40,6 +40,18 @@ public class EmployeeService {
         }
     }
 
+    public Optional<EmployeeDto> delete(UUID id) {
+        try {
+            Optional<Employee> foundEmployee = repository.findById(id);
+            foundEmployee.ifPresent(repository::delete);
+            return foundEmployee.map(EmployeeDto::new);
+        } catch (Exception e) {
+            // TODO: proper error handling
+            throw new RuntimeException("Can not save employee", e);
+        }
+    }
+
+
     private Employee update(Employee employee, UpdateEmployeeDto updateDto) {
         Optional.ofNullable(updateDto.getEmail()).ifPresent(employee::setEmail);
         Optional.ofNullable(updateDto.getFirstName()).ifPresent(employee::setFirstName);
