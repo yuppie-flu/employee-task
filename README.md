@@ -1,4 +1,4 @@
-## Takeway.com test task
+## Takeaway.com test task
 
 ### Employee service
 
