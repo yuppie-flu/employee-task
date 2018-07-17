@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
+// TODO: add hobbies support
 @Entity
 @Table(name = "hobbies")
 public class Hobby {
@@ -14,5 +15,6 @@ public class Hobby {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private UUID employeeId;
+    // TODO: model hobbies
     //private Set<String> hobbies;
 }

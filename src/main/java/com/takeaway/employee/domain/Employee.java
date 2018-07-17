@@ -29,6 +29,8 @@ public class Employee {
     private String lastName;
     private LocalDate birthday;
 
+    protected Employee() {}
+
     public Employee(EmployeeDto employeeDto) {
         this.email = employeeDto.getEmail();
         this.firstName = employeeDto.getFirstName();
