@@ -20,8 +20,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Dependencies versions -->
-        <guava.version>24.0-jre</guava.version>
+        <guava.version>25.1-jre</guava.version>
         <lombok.version>1.18.0</lombok.version>
+
+        <!-- Test dependencies versions -->
+        <asserj.version>3.10.0</asserj.version>
     </properties>
 
     <dependencies>
@@ -51,6 +54,11 @@
             <version>1.4.197</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -64,6 +72,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${asserj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
