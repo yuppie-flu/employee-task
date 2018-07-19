@@ -1,5 +1,6 @@
 package com.takeaway.employee;
 
+import com.google.common.collect.ImmutableSet;
 import com.takeaway.employee.web.dto.EmployeeDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,6 +23,7 @@ public class EmployeeRestIntegrationTest {
     private static final String FIRST_NAME = "Name";
     private static final String LAST_NAME = "Surname";
     private static final LocalDate BIRTHDAY = LocalDate.of(1995, 2, 28);
+    private static final Set<String> HOBBIES = ImmutableSet.of("swimming", "music", "tv");
 
     @Autowired
     TestRestTemplate restTemplate;
@@ -28,7 +31,7 @@ public class EmployeeRestIntegrationTest {
     @Test
     public void createAndReadTest() {
         // setup
-        EmployeeDto dto = new EmployeeDto(null, EMAIL, FIRST_NAME, LAST_NAME, BIRTHDAY);
+        EmployeeDto dto = new EmployeeDto(null, EMAIL, FIRST_NAME, LAST_NAME, BIRTHDAY, HOBBIES);
         EmployeeDto createRespDto = restTemplate.postForObject(API_PREFIX + "/employee", dto, EmployeeDto.class);
 
         // when
@@ -40,5 +43,6 @@ public class EmployeeRestIntegrationTest {
         assertThat(readResponse.getFirstName()).isEqualTo(FIRST_NAME);
         assertThat(readResponse.getLastName()).isEqualTo(LAST_NAME);
         assertThat(readResponse.getBirthday()).isEqualTo(BIRTHDAY);
+        assertThat(readResponse.getHobbies()).isEqualTo(HOBBIES);
     }
 }

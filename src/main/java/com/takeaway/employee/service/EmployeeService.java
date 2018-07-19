@@ -36,7 +36,7 @@ public class EmployeeService {
             return foundEmployee.map(EmployeeDto::new);
         } catch (Exception e) {
             // TODO: proper error handling
-            throw new RuntimeException("Can not save employee", e);
+            throw new RuntimeException("Can not update employee", e);
         }
     }
 
@@ -47,10 +47,9 @@ public class EmployeeService {
             return foundEmployee.map(EmployeeDto::new);
         } catch (Exception e) {
             // TODO: proper error handling
-            throw new RuntimeException("Can not save employee", e);
+            throw new RuntimeException("Can not delete employee", e);
         }
     }
-
 
     private Employee update(Employee employee, UpdateEmployeeDto updateDto) {
         Optional.ofNullable(updateDto.getEmail()).ifPresent(employee::setEmail);

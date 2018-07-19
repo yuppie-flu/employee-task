@@ -1,20 +1,36 @@
 package com.takeaway.employee.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.UUID;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-// TODO: add hobbies support
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 @Entity
 @Table(name = "hobbies")
+@Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(of = "value")
 public class Hobby {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
-    private UUID employeeId;
-    // TODO: model hobbies
-    //private Set<String> hobbies;
+
+    private String value;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
+
+    public Hobby(String value, Employee employee) {
+        this.value = value;
+        this.employee = employee;
+    }
 }
