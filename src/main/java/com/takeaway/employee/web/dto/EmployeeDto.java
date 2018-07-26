@@ -5,7 +5,6 @@ import com.takeaway.employee.domain.Employee;
 import com.takeaway.employee.domain.Hobby;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -14,7 +13,6 @@ import java.util.stream.Collectors;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeDto {
     private UUID id;
